@@ -17,13 +17,13 @@ public class SignUpCommandHandler(IUserRepository repository, IPasswordHasher ha
     {
         var request = command.Dto;
 
-        var user = new User()
+        var user = new DataAccess.Entities.User()
         {
             Username = request.Username,
             Email = request.Email,
             PasswordHash = hasher.HashPassword(request.Password),
             IsActive = true,
-            RoleId = 2,
+            RoleId = 1,
         };
 
         await repository.AddAsync(user);

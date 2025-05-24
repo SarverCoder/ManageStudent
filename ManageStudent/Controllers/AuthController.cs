@@ -1,4 +1,5 @@
-﻿using ManageStudent.Auth.SignUp;
+﻿using ManageStudent.Auth.SignIn;
+using ManageStudent.Auth.SignUp;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,12 @@ public class AuthController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Registration([FromBody] SignUpRequestDto command)
     {
         return Ok(await mediator.Send(new SignUpCommand(command)));
+    }
+
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login([FromBody] SignInRequestDto command)
+    {
+        return Ok(await mediator.Send(new SignInCommand(command)));
     }
 
 }

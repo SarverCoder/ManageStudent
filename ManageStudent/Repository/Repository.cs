@@ -8,7 +8,7 @@ namespace ManageStudent.Repository
     {
         private readonly ApplicationDbContext Context;
 
-        public Repository(ApplicationDbContext context)
+        protected Repository(ApplicationDbContext context)
         {
             Context = context;
         }

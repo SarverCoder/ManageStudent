@@ -14,8 +14,15 @@ var configuration = builder.Configuration;
 builder.Services
     .AddDatabase(configuration)
     .ConfigurationJwt(configuration)
-    .AddServices();
+    .AddServices()
+    .AddSwaggerDocs();
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+});
 
 
 
